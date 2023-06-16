@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:reserve_me/Screens/Home/Home.dart';
 import 'package:reserve_me/Size_config.dart';
 import 'package:reserve_me/const.dart';
 class LoginScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: getHeight(350),
             width: getWidth(395),
             decoration: BoxDecoration(
-              color: Color(0xc7d37322),
+              color: const Color(0xc7d37322),
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(getHeight(32)),bottomLeft: Radius.circular(getHeight(32)))
             ),
             child:  Column(
@@ -169,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding:  EdgeInsets.symmetric(horizontal: getWidth(45)),
             child: GestureDetector(
+              onTap: ()=>Navigator.push(context, MaterialPageRoute(builder:(context)=>const HomeScreen() )),
               child: Container(
                 height: getHeight(70),
                 decoration: BoxDecoration(
