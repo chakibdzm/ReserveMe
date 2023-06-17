@@ -33,6 +33,7 @@ class _ReserveScreenState extends State<ReserveScreen> {
 
 
   int selectedIndex = -1;
+  int selectedIndexHour = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -148,8 +149,8 @@ class _ReserveScreenState extends State<ReserveScreen> {
           child: GridView.builder(
 
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 2, // Adjust this aspect ratio to resize the grid items
-              crossAxisSpacing: 8.0, // Add spacing between the grid items horizontally
+              childAspectRatio: 2,
+              crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
               crossAxisCount: 4,
             ),
@@ -183,6 +184,61 @@ class _ReserveScreenState extends State<ReserveScreen> {
           ),
         ),
         ),
+            SizedBox(height: getHeight(35),),
+            Padding(
+              padding: EdgeInsets.only(left: getWidth(20)),
+              child: const Text("Select The Number Of Hours :",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700
+
+                ),
+              ),
+            ),
+            SizedBox(height: getHeight(20),),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: getWidth(20)),
+              child: SizedBox(
+                height: getHeight(80),
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 2,
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                    crossAxisCount: 3,
+                  ),
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndexHour = index;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: selectedIndexHour == index ? kprimary : Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color:selectedIndexHour == index ?Colors.white  :kprimary ,width: 1.0 )
+                        ),
+                        child: Center(
+                          child: Text(
+                            '${index+1}',
+                            style: TextStyle(
+                              color: selectedIndexHour == index?Colors.white:Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+
+
+
             const Spacer(),
             Center(
               child: InkWell(
